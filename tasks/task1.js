@@ -4,8 +4,16 @@
 "ВИКОРИСТОВУВАТИ ЛИШЕ МЕТОДИ МАСИВІВ filter, map, sort. Для того щоб залишити лише унікальні категорії товарів можна використати конструкцію new Set, або використати метод filter()/indexOf()/forEach()"
 
 function getPopularCategories(products) {
-  //Ваш код
+  return products
+    .filter(product => product.sales > 5)
+    .sort((a, b) => b.sales - a.sales)
+    .map(product => product.category)
+    .filter((category, index, array) => array.indexOf(category) === index);
 }
+
+module.exports = getPopularCategories;
+
+
 
 // Приклад використання:
 const products = [
